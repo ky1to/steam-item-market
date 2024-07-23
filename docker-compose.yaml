@@ -1,0 +1,55 @@
+version: "3.9"
+services:
+  postgres_db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - "5053:80"
+    depends_on:
+      - postgres_db
+
+  api:
+    working_dir: /app/src/api
+    build: ./src/api
+    restart: always
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres_db
+      - redis
+      - pgadmin
+
+  web:
+    build: ./src/nginx
+    restart: always
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+      
+  redis:
+    restart: always
+    image: redis:6-alpine
+    ports:
+      - "6381:6379"
+
+volumes:
+  postgres_data:

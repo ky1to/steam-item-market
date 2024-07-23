@@ -1,0 +1,33 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+        <meta charset="UTF-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>Steam Parser</title> 
+        <link rel="stylesheet" href="static/colors.css">
+        <link rel="stylesheet" href="static/desc/css.css">
+        </head> 
+        <body> 
+            <div class="fiter-container default-block">
+                <input type="text" id="search" placeholder="search" onkeypress="myFunction(event)"> 
+                <select  id="category" onchange="select_request()">
+                    <option value="">None</option>
+                    <option value="None">Specific</option>
+                </select>
+            </div>
+            <div id="containers"></div>
+            <div class="fiter-container default-block">
+                <div class="search-control default-block"s> 
+                    <button class="search-button default-block"id="search-button-1" onclick="update_page(1)">1</button>
+                    <button class="search-button default-block"id="search-button-2" onclick="update_page(2)">2</button>
+                    <button class="search-button default-block"id="search-button-3" onclick="update_page(3)">3</button>
+                    <button class="search-button default-block"id="search-button-4" onclick="update_page(4)">4</button>
+                    <button class="search-button default-block"id="search-button-5" onclick="update_page(5)">5</button>
+                    <button class="search-button default-block"id="search-button-6" onclick="update_page(6)">6</button>
+                    <button class="search-button default-block"id="search-button-7" onclick="update_page(7)">7</button>
+                </div>
+            </div>
+        </body> 
+        <script src="static/desc/root.js"></script>
+</html>

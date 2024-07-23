@@ -1,0 +1,45 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+        <meta charset="UTF-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>Steam Parser</title> 
+        <link rel="stylesheet" href="static/colors.css">
+        <link rel="stylesheet" href="static/item_page/css.css">
+        </head> 
+        <body>
+            <div class="fiter-container default-block"></div>
+
+            <div class="container"> 
+                <div class="container-head">
+                    <div class="container-image"><img id="img-item" src="" alt=""2></div> 
+                    <div class="content-head">
+                        <div class="container-name">
+                            <h1 id="name-item"></h1>
+                            <h2 id="game-item"></h2>
+                            <p id="disc-item"></p>
+                        </div>
+                        <div class="mini-price">
+                            <div class="grid-item" id="item-sell-lots"></div>
+                            <div class="grid-item" id="item-buy-lots"></div>
+                            <div class="grid-item" id="item-sell"></div>
+                            <div class="grid-item" id="item-buy"></div>
+                            <div class="grid-item" id="item-profit"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-price"></div>
+                <div class="blocks">
+                    <canvas style="max-width: 99%; max-height: 20%;" id="myChart1"></canvas>
+                    <canvas style="max-width: 99%; max-height: 20%;" id="myChart2"></canvas>
+                    <canvas style="max-width: 99%; max-height: 20%;" id="myChart3"></canvas>
+                    <canvas style="max-width: 99%; max-height: 20%;" id="myChart4"></canvas>
+                    <canvas style="max-width: 99%; max-height: 20%;" id="myChart5"></canvas>
+                </div>
+                <div class="button-block"></div>
+            </div>
+        </body> 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="static/item_page/root.js"></script>
+</html>
