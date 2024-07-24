@@ -28,5 +28,5 @@ To run you need to create a .env file with content and fill it with your data:
 ```
 after this you can run docker compose:
 ``` sh
-    sudo docker-compose up --build
+sudo docker-compose up --build
 ```
