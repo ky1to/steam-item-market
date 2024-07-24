@@ -1,5 +1,10 @@
 # steam-item-market
 This is a project written to parse the Steam Market website, save it to a database (SQLAlchemy + postgresql) and output it via a fast API with caching using Redis.
+## To-Do list
+- make a service for updating the database (update.py does not work now)
+- Authorization + personal account
+- email notification (report)
+
 ## Backup
 Download a backup copy of the database in which the element table is located. If you want to create your own database backup, use the following command:
 ``` sh
@@ -20,11 +25,11 @@ psql -U username -d your_db -f /backup.sql
 ## Launch
 To run you need to create a .env file with content and fill it with your data:
 ```  
-    POSTGRES_USER=
-    POSTGRES_PASSWORD=
-    POSTGRES_DB=
-    PGADMIN_DEFAULT_EMAIL=
-    PGADMIN_DEFAULT_PASSWORD=
+POSTGRES_USER=
+POSTGRES_PASSWORD=
+POSTGRES_DB=
+PGADMIN_DEFAULT_EMAIL=
+PGADMIN_DEFAULT_PASSWORD=
 ```
 after this you can run docker compose:
 ``` sh
