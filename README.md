@@ -1,5 +1,6 @@
 # steam-item-market
-This is a project written to parse the Steam Market website, save it to a database (SQLAlchemy + postgresql) and output it via a fast API with caching using Redis.
+This is a project written to scrape the Steam Market website, store it in a database (SQLAlchemy + postgresql) and output it through a fast API with caching using Redis. Also uses nginx to send html file and static content.
+
 ## To-Do list
 - make a service for updating the database (update.py does not work now)
 - Authorization + personal account
