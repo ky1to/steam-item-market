@@ -2,7 +2,7 @@
 This is a project written to scrape the Steam Market website, store it in a database (SQLAlchemy + postgresql) and output it through a fast API with caching using Redis. Also uses nginx to send html file and static content.
 
 ## To-Do list
-- make a service for updating the database (update.py does not work now)
+- add a service for logs
 - Authorization + personal account
 - email notification (report)
 
