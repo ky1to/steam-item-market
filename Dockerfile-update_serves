@@ -1,0 +1,7 @@
+FROM python:3.12-slim
+WORKDIR /app
+COPY ./src/update_serves /app
+COPY ./requirements.txt /app
+COPY ./.env /app/config
+RUN pip install -r requirements.txt --break-system-packages
+CMD python main.py
