@@ -12,6 +12,18 @@ services:
     volumes:
       - data:/var/lib/postgresql/data
 
+  postgres_user_db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${AUTH_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${AUTH_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${AUTH_POSTGRES_DB}
+    ports:
+      - "5436:5432"
+    volumes:
+      - user_data:/var/lib/postgresql/data
+
   pgadmin:
     image: dpage/pgadmin4
     restart: always
@@ -22,6 +34,7 @@ services:
       - "5053:80"
     depends_on:
       - postgres_db
+      - postgres_user_db
 
   update_serves:
     build: 
@@ -30,24 +43,28 @@ services:
     restart: always
     depends_on:
       - postgres_db
+    volumes:
+      - ./src/update_serves/logs:/app/logs
 
   api:
     build:
       context: .
       dockerfile: Dockerfile-api
     restart: always
-    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --no-access-log
     ports:
       - "8000:8000"
     depends_on:
       - postgres_db
       - redis
+    volumes:
+      - ./src/api/logs:/app/logs
 
   web:
     build: ./src/nginx
     restart: always
     ports:
-      - "8080:80"
+      - "80:80"
     depends_on:
       - api
       
@@ -59,3 +76,4 @@ services:
 
 volumes:
   data:
+  user_data:

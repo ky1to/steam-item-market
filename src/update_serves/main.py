@@ -10,6 +10,16 @@ import random
 import time
 import json
 import re
+import logging
+
+logging.basicConfig(
+    level=logging.INFO, 
+    filename = "logs/update_serves.log", 
+    format = "%(asctime)s - %(module)s - %(levelname)s - %(funcName)s: %(lineno)d - %(message)s", 
+    datefmt='%H:%M:%S',
+)
+
+
 
 def html2content_arr(arr):
     aut = [] 
@@ -172,7 +182,7 @@ async def add_item_history(item_db, game_id):
             sell_lots = int(sell_data[0]),
             buy_lots = int(buy_data[0]),
         ))
-        print(f"{item_db.name}")
+        logging.info(f"add new item {item_db.name}")
     except: 
         time.sleep(0.3)
         await add_item_history(item_db, game_id)
@@ -180,10 +190,10 @@ async def add_item_history(item_db, game_id):
 async def update_price():
     game_id = 252490
     while True:
-        for i in range(1, 415, 1):
+        for i in range(1, 410, 1):
             data_db = await Interface.find_item("", "", i)
             for j in range(10):
-                time.sleep(0.6)
+                time.sleep(0.4)
                 await add_item_history(SItem.from_orm(data_db[j]), game_id)
 
 print("Start serves")

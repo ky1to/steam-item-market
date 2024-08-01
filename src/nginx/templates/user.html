@@ -1,0 +1,27 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+        <meta charset="UTF-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>Steam Parser</title> 
+        <link rel="icon" href="static/favicon.ico">
+        <link rel="stylesheet" href="static/colors.css">
+        <link rel="stylesheet" href="static/user/css.css">
+        </head> 
+        <body> 
+            <div class="fiter-container default-block">
+                <input type="text" id="search" placeholder="search" onkeypress="myFunction(event)"> 
+                <select  id="category" onchange="select_request()">
+                    <option value="">None</option>
+                    <option value="None">Specific</option>
+                </select>
+                <button id="button-home">home</button>
+                <button id="button-home" onclick="login()">test1</button>
+                <button id="button-home" onclick="getUserInfo()">test2</button>
+            </div>
+            <div id="containers"></div>
+        </body>
+        <script src="static/user/root.js"></script>
+        <script src="static/user/auth.js"></script>
+</html>
